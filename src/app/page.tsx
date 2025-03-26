@@ -1,38 +1,95 @@
-import Image from 'next/image'
-
-import React from "react";
-import  Style  from './page.module.css';
+'use client'; // Next.js appディレクトリなら必要
+import { useRef, useEffect } from 'react';
 
 const mockUsers = [
-  { id: 1, name: "山田 太郎", avatar: "https://via.placeholder.com/40" },
-  { id: 2, name: "佐藤 花子", avatar: "https://via.placeholder.com/40" },
-  { id: 3, name: "鈴木 次郎", avatar: "https://via.placeholder.com/40" },
+  { id: 1, name: '山田 太郎', avatar: 'https://via.placeholder.com/40' },
+  { id: 2, name: '佐藤 花子', avatar: 'https://via.placeholder.com/40' },
+  { id: 3, name: '鈴木 次郎', avatar: 'https://via.placeholder.com/40' },
 ];
 
 export default function UserList() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // フィルター関数
+  const handleInput = () => {
+    const keyword = inputRef.current?.value || '';
+    const items = listRef.current?.querySelectorAll('li') || [];
+
+    items.forEach((li) => {
+      const text = li.getAttribute('data-name') || '';
+      const visible = text.includes(keyword);
+      (li as HTMLElement).style.display = visible ? 'flex' : 'none';
+    });
+  };
+
+  // 初期化で全件表示を保証（オプション）
+  useEffect(() => {
+    handleInput();
+  }, []);
+
   return (
-    <div className="h-screen w-full bg-whith-100">
-      <div className="max-w-md mx-auto bg-white shadow-md rounded-md overflow-hidden">
-        <div className="bg-green-500 text-white text-lg font-semibold p-4">
-          ユーザー一覧
-        </div>
-        <ul>
-          {mockUsers.map((user) => (
-            <li
-              key={user.id}
-              className="flex items-center gap-4 p-4 border-b hover:bg-gray-100 cursor-pointer"
-            >
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-10 h-10 rounded-full"
-              />
-              <span className="text-gray-800 font-medium">{user.name}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div style={{ maxWidth: 400, margin: '40px auto', fontFamily: 'sans-serif' }}>
+      <h2
+        style={{
+          backgroundColor: '#00c853',
+          color: 'white',
+          padding: '10px 16px',
+          borderTopLeftRadius: '8px',
+          borderTopRightRadius: '8px',
+        }}
+      >
+        ユーザー一覧
+      </h2>
+
+      <input
+        ref={inputRef}
+        type="text"
+        placeholder="名前で検索"
+        onInput={handleInput}
+        style={{
+          width: '100%',
+          padding: '8px 12px',
+          border: '1px solid #ccc',
+          borderBottom: 'none',
+        }}
+      />
+
+      <ul
+        ref={listRef}
+        style={{
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+          border: '1px solid #ccc',
+          borderTop: 'none',
+        }}
+      >
+        {mockUsers.map((user) => (
+          <li
+            key={user.id}
+            data-name={user.name}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '12px',
+              borderBottom: '1px solid #eee',
+            }}
+          >
+            <img
+              src={user.avatar}
+              alt={user.name}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: '50%',
+                marginRight: 12,
+              }}
+            />
+            <span>{user.name}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
