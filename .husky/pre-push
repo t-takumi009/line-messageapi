@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# ブランチ名チェックなど
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+echo "🌿 ブランチ名: $BRANCH_NAME"
