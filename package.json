@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --config .prettierrc --write .",
     "prepare": "husky install",
-    "test": "..."
+     "test": "echo '🧪 テストはまだ未設定です。'"
   },
   "dependencies": {
     "next": "15.2.4",
