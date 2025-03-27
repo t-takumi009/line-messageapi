@@ -43,18 +43,12 @@ export default function UserList() {
       </h2>
 
       <input
+        className = "w-full py-2 px-3 border-1 border-solid border-[#ccc] border-b-0"
         ref={inputRef}
         type="text"
         placeholder="名前で検索"
-        onInput={handleInput}  
-        />
-        
-        {/* style={{
-          width: '100%',
-          padding: '8px 12px',
-          border: '1px solid #ccc',
-          borderBottom: 'none',
-        }} */}
+        onInput={handleInput}
+    />
 
       <ul
         ref={listRef}
