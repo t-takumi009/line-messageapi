@@ -46,14 +46,15 @@ export default function UserList() {
         ref={inputRef}
         type="text"
         placeholder="名前で検索"
-        onInput={handleInput}
-        style={{
+        onInput={handleInput}  
+        />
+        
+        {/* style={{
           width: '100%',
           padding: '8px 12px',
           border: '1px solid #ccc',
           borderBottom: 'none',
-        }}
-      />
+        }} */}
 
       <ul
         ref={listRef}
