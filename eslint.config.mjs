@@ -12,7 +12,7 @@ export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
 ],
-rules: {
+rules, {
   "react/react-in-jsx-scope": "off",
   // その他、独自ルールを追加するならここに書く
-},);
+});
