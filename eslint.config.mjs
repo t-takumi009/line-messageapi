@@ -27,4 +27,4 @@ export default defineConfig([
   // 外に書かない！（上書きされてしまうため）
   // tseslint.configs.recommended,
   // pluginReact.configs.flat.recommended,
-])
+]);
