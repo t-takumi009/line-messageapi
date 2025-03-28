@@ -11,8 +11,4 @@ export default defineConfig([
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"], plugins: { js }, extends: ["js/recommended"] },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-],
-rules, {
-  "react/react-in-jsx-scope": "off",
-  // その他、独自ルールを追加するならここに書く
-});
+]);
