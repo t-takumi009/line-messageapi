@@ -1,11 +1,17 @@
-'use crient'
+'use crient';
 
-import { ChangeEvent } from 'react'
+import { ChangeEvent } from 'react';
 
-export function SearchUser({ keyword, setKeyword }: { keyword: string; setKeyword: (value: string) => void }) {
+export function SearchUser({
+  keyword,
+  setKeyword,
+}: {
+  keyword: string;
+  setKeyword: (value: string) => void;
+}) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value)
-  }
+    setKeyword(e.target.value);
+  };
 
   return (
     <input
@@ -15,5 +21,5 @@ export function SearchUser({ keyword, setKeyword }: { keyword: string; setKeywor
       value={keyword}
       onChange={handleChange}
     />
-  )
+  );
 }
