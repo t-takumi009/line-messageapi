@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --config .prettierrc --write .",
     "prepare": "husky install",
-     "test": "echo '🧪 テストはまだ未設定です。'"
+    "test": "echo '🧪 テストはまだ未設定です。'"
   },
   "dependencies": {
     "next": "15.2.4",
@@ -26,6 +26,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.4",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
     "husky": "^8.0.0",
